@@ -1,0 +1,9 @@
+.DS_Store
+.DS_Store?
+._*
+.env
+.env.*
+*.log
+.cursor/
+.idea/
+.vscode/

@@ -1,0 +1,53 @@
+/* A plain cursor: a small dot that is exactly where the pointer is, and a thin ring that trails it.
+   No picture. It inverts whatever it is over, so it reads on white, on photographs and on the dark orchard. */
+html.has-cursor,
+html.has-cursor * { cursor: none !important; }
+
+.cur {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: difference;
+  transition: opacity 0.25s ease;
+  will-change: transform;
+}
+
+.cur.is-on { opacity: 1; }
+
+.cur--dot::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+
+.cur--ring::before {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1.5px solid #fff;
+  border-radius: 50%;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease;
+}
+
+/* Over something you can press: the ring opens up. */
+.cur.is-link.cur--ring::before { transform: scale(1.45); background-color: rgba(255, 255, 255, 0.18); }
+.cur.is-link.cur--dot::before { transform: scale(0.6); }
+
+/* Pressed: the ring closes in. */
+.cur.is-down.cur--ring::before { transform: scale(0.72); }
+.cur.is-link.is-down.cur--ring::before { transform: scale(1.15); }
+.cur.is-down.cur--dot::before { transform: scale(1.3); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cur--ring::before, .cur--dot::before { transition: none; }
+}

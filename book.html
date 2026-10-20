@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apple Collection — The Book</title>
+  <link rel="stylesheet" href="styles.css?v=head2" />
+</head>
+<body class="is-loading">
+  <div class="loading" id="loading">
+    <p>Apple<br />Collection</p>
+  </div>
+
+  <header>
+    <div class="brand">
+      <p class="mark"><a href="index.html" id="home-link">Apple Collection</a></p>
+      <p class="credit">Yunuo LI · Double-sided ring binding</p>
+    </div>
+    <p class="where" id="where">Cover</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <button type="button" id="btn-rotate">Rotate</button>
+      <button type="button" id="btn-front" hidden>Front</button>
+      <button type="button" id="btn-back" hidden>Back cover</button>
+      <button type="button" id="btn-contents">Contents</button>
+      <button type="button" id="btn-read" hidden>Read</button>
+      <button type="button" id="btn-close" hidden>Close</button>
+    </nav>
+  </header>
+
+  <canvas id="view"></canvas>
+
+  <footer>
+    <p id="hint">Drag to turn the book. Click the cover to open.</p>
+    <p id="folio">Cover</p>
+  </footer>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="contents" id="contents" hidden>
+    <p class="eyebrow">Contents</p>
+    <div id="contents-list"></div>
+    <p class="keys">Open the book · Click the left or right page to turn that side · Drag to rotate</p>
+  </aside>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="scene.js?v=sides4"></script>
+</body>
+</html>
